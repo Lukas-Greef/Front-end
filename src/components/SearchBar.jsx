@@ -1,25 +1,25 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-function SearchBar({ onSearch }) {
-    const [searchTerm, setSearchTerm] = useState("");
+function SearchBar({ setSearchTerm }) {
+    const [input, setInput] = useState("");
 
-    // Update de zoekterm wanneer de gebruiker typt
     const handleChange = (event) => {
-        setSearchTerm(event.target.value);
-        onSearch(event.target.value);  // Roep de onSearch functie aan om de lijst te filteren
+        setInput(event.target.value);
+        setSearchTerm(event.target.value); // Stuur waarde naar CoinList
     };
 
     return (
-        <div className="main">
-            <input
-                type="text"
-                className="search-balk"
-                placeholder="Zoek naar een coin..."
-                value={searchTerm}
-                onChange={handleChange}
-            />
-        </div>
+        <input
+            type="text"
+            placeholder="Zoek een coin..."
+            value={input}
+            onChange={handleChange}
+            className="search-bar"
+        />
     );
 }
-
+SearchBar.propTypes = {
+    setSearchTerm: PropTypes.func.isRequired,
+};
 export default SearchBar;
