@@ -11,10 +11,10 @@ function CoinList() {
     });
 
     useEffect(() => {
-        fetch("https://api.coincap.io/v2/assets")
+        fetch("data-api.coindesk.com/asset/v1/top/list?page=1&page_size=100")
             .then(httpResponse => httpResponse.json())
             .then(jsonResponse => {
-                setCoins(jsonResponse.data);
+                setCoins(jsonResponse.Data.LIST);
             });
     }, []);
 
@@ -37,18 +37,21 @@ function CoinList() {
 
     return (
         <div className="main">
+            <button>
+                <Link to="/favorites">Favorieten</Link>
+            </button>
             <h1>Coins Overview</h1>
-            <SearchBar setSearchTerm={setSearchTerm} /> {/* Geef functie door */}
+            <SearchBar setSearchTerm={setSearchTerm}/> {/* Geef functie door */}
             <div className="coins-container">
                 {filteredCoins.map(coin => (
-                    <div key={coin.id} className="card">
-                        <Link to={`/coin/${coin.id}`} className="coin-link">
-                            <h2 className="coin-name">{coin.name}</h2>
+                    <div key={coin.URI} className="card">
+                        <Link to={`/coin/${coin.URI}`} className="coin-link">
+                            <h2 className="coin-name">{coin.Name}</h2>
                             <div className="coin-price">Prijs: $ {parseFloat(coin.priceUsd).toFixed(2)}</div>
                         </Link>
                         <button
-                            className={`favorite-btn ${favorites.includes(coin.id) ? "active" : ""}`}
-                            onClick={() => toggleFavorite(coin.id)}
+                            className={`favorite-btn ${favorites.includes(coin.URI) ? "active" : ""}`}
+                            onClick={() => toggleFavorite(coin.URI)}
                         >
                             ★
                         </button>
