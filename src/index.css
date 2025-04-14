@@ -190,3 +190,63 @@ input::placeholder {
   text-decoration: none;
   color: black;
 }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.coin-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.coin-card {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #3498db;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.coin-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.coin-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.coin-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 15px;
+  font-size: 18px;
+}
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: #555;
+}

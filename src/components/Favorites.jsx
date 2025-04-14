@@ -11,13 +11,13 @@ function Favorites() {
         setFavorites(savedFavorites);
 
         // Haal alle coins op
-        fetch("https://api.coincap.io/v2/assets")
+        fetch("https://data-api.coindesk.com/asset/v1/top/list?page=1&page_size=100")
             .then(response => response.json())
-            .then(data => setCoins(data.data || []));
+            .then(data => setCoins(data.Data.LIST || []));
     }, []);
 
     // Filter de coins om alleen favorieten te tonen
-    const favoriteCoins = coins.filter(coin => favorites.includes(coin.id));
+    const favoriteCoins = coins.filter(coin => favorites.includes(coin.ID));
 
     return (
         <div>
@@ -25,10 +25,10 @@ function Favorites() {
             {favoriteCoins.length > 0 ? (
                 <div className="coins-container">
                     {favoriteCoins.map(coin => (
-                        <div key={coin.id} className="card">
-                            <Link to={`/coin/${coin.id}`} className="coin-link">
-                                <h2 className="coin-name">{coin.name}</h2>
-                                <div className="coin-price">Prijs: $ {parseFloat(coin.priceUsd).toFixed(2)}</div>
+                        <div key={coin.ID} className="card">
+                            <Link to={`/coin/${coin.ID}`} className="coin-link">
+                                <h2 className="coin-name">{coin.NAME}</h2>
+                                <div className="coin-price">Prijs: $ {parseFloat(coin.PRICE_USD).toFixed(2)}</div>
                             </Link>
                         </div>
                     ))}

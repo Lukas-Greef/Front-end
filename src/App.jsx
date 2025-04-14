@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import CoinList from "./components/CoinList";
 import "./index.css";
 import Favorites from "./components/Favorites.jsx";
+import MarketChart from "./components/MarketChart.jsx";
 
 
 function App() {
